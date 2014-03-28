@@ -1,0 +1,24 @@
+<h2>Main</h2>
+<p>
+	Name:
+		<b>
+			<%= @userN %> 
+			<%= @userL %>
+		</b>
+</p>
+<br>
+
+<b>Skills:</b>
+<br>
+<%if @skillsCurrent.count == 0 %>
+	Haven't any skill
+<% else %>
+	<% @skillsCurrent.each do |sc| %>
+		<% SkillsTerc.where(id: sc.id_skills).each do |skill| %>
+			<%= skill.name %>
+		<% end %>
+	<% end %>
+<% end %>
+<br>
+<br>
+<%= button_to "Add new skill", action: "skills_add" %>

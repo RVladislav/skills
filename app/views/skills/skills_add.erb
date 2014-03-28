@@ -1,0 +1,24 @@
+<h2>Search some skills</h2>
+<%= form_for :post, :url => { :action => 'skills_add', :controller => 'skills'} do |f| %>
+
+<% @skillsAll.each do |sa| %>
+	<% if UskillsTerc.where(id_users: User.current.id, id_skills: sa.id).count != 0 %>
+		<%= f.check_box sa.id, checked: true %>
+	<% else %>
+		<%= f.check_box sa.id %>
+	<% end %>
+	<%= f.label sa.name %>
+	<br>
+	<br>
+<% end %>
+<%= f.submit 'Add to me', id: 'butAddSkills' %>
+<% end %>
+
+<%= form_for :post, :url => { :action => 'skills_add_admin', :controller => 'skills'} do |f| %>
+<% if User.current.admin == true %>
+    <br>
+    <br>
+    <%= f.text_field :newSkill %><br>
+    <%= f.submit 'Add a skill', id: 'butAddSkillsAdmin' %>
+<% end %>
+<% end %>

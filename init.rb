@@ -1,8 +1,7 @@
 Redmine::Plugin.register :skills do
   name 'Skills plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  author 'Vladislav Razhnov'
+  description 'Skills for InTercom'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  menu :application_menu, :skills, { :controller => 'skills', :action => 'index' }, :caption => 'Skills'
 end

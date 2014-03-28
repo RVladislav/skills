@@ -1,2 +1,3 @@
-# Plugin's routes
-# See: http://guides.rubyonrails.org/routing.html
+get 'skills', :to => 'skills#index'
+post 'skills_add', :to => 'skills#skills_add'
+post 'skills_add_admin', :to => 'skills#skills_add_admin'
