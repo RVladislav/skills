@@ -21,6 +21,19 @@ class SkillsController < ApplicationController
 	redirect_to :action => 'index'  # Возврат на главную 
   end
 
+  def skills_find
+    if params[:post] != nil
+      @skillsAll.each do |st|
+        if params[:post][st.id.to_s()] == '1'
+          #Вывод пользователей
+          @showUsers = UskillsTerc.where(id_users: User.current.id, id_skills: st.id).last
+          @showUser = User.where(id: @showUsers.id)
+        end
+      end
+    end
+    redirect_to :action => 'skills_find'
+  end
+
   def skills_add
   	@skillsAll = SkillsTerc.all#Все скилы
   	if params[:post] != nil
@@ -29,8 +42,7 @@ class SkillsController < ApplicationController
   			@check = UskillsTerc.where(id_users: User.current.id, id_skills: st.id)#Фильтр на текущего пользователя и текущий выбранный скилл
   			if @check.count == 0#Если его нет и он выбран - добавить
   				UskillsTerc.create(id_users: User.current.id, id_skills: st.id)
-  			end
-  			
+  			end  			
   		else# Если он есть и не выбран - удалить
   			UskillsTerc.where(id_users: User.current.id, id_skills: st.id).each do |del|
   				UskillsTerc.destroy(del.id)
