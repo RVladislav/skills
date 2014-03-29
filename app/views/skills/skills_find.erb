@@ -9,14 +9,13 @@
 <% end %>
 <br>
 <% if @userSkillsName %>
-	<% User.where(id: @userSkillsName).each do |showUS| %>
-		<b><%= showUS.firstname %>
-		<%= showUS.lastname %></b>
+	<p><% User.where(id: @userSkillsName).each do |showUS| %>
+		<b><%= link_to showUS.firstname + ' ' + showUS.lastname, :action => 'userOther' %></b>
 		<br>
 		<% @skillsCurrent = SkillsTerc.where(id: UskillsTerc.where(id_users: showUS.id).select(:id_skills)) %>
 		<% @skillsCurrent.each do |showSN| %>
-			<i><%= showSN.name %>,</i>
+			<q><%= showSN.name %></q>
 		<% end %>
-		<br>
+	</p>
 	<% end %>
 <% end %>

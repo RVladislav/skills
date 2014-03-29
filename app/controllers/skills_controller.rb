@@ -10,6 +10,9 @@ class SkillsController < ApplicationController
 	@skillsCurrent = UskillsTerc.where(id_users: User.current.id)#Скилы текущего пользователя
   end
 
+  def userOther
+  end
+
   def skills_add_admin
     if params[:post][:newSkill] != ''#Проверка на наличие параметров
     	@skill = SkillsTerc.new
