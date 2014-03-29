@@ -2,8 +2,7 @@
 <p>
 	Name:
 		<b>
-			<%= @userN %> 
-			<%= @userL %>
+			<%= @userWelcome %>
 		</b>
 </p>
 <br>
@@ -22,3 +21,4 @@
 <br>
 <br>
 <%= button_to "Add new skill", action: "skills_add" %>
+<%= button_to "Find", action: "skills_find" %>

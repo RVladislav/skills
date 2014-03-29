@@ -4,8 +4,7 @@ class SkillsController < ApplicationController
 
 
   def index
-	@userN = User.current.firstname
-	@userL = User.current.lastname
+  @userWelcome = User.current
 	
 	@skillsAll = SkillsTerc.all#Все скилы
 	@skillsCurrent = UskillsTerc.where(id_users: User.current.id)#Скилы текущего пользователя
@@ -22,16 +21,17 @@ class SkillsController < ApplicationController
   end
 
   def skills_find
+    @skillsAll = SkillsTerc.all
+    @userSK = Array.new
+    @skillsSK = Array.new
+    i=0
     if params[:post] != nil
       @skillsAll.each do |st|
         if params[:post][st.id.to_s()] == '1'
-          #Вывод пользователей
-          @showUsers = UskillsTerc.where(id_users: User.current.id, id_skills: st.id).last
-          @showUser = User.where(id: @showUsers.id)
+
         end
-      end
+      end  
     end
-    redirect_to :action => 'skills_find'
   end
 
   def skills_add

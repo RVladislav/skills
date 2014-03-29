@@ -1,14 +1,9 @@
 <h2>Find</h2>
 <%= form_for :post, :url => { :action => 'skills_find', :controller => 'skills'} do |f| %>
-	<% @skillsAll.each do |sa| %>
-		<%= f.check_box sa.id %>
-		<%= f.label sa.name %>
-	<% end %>
-	<br>
-	<br>
-	<%= f.submit 'Find', id: 'butFindSkills' %>
+<% @skillsAll.each do |sa| %>
+	<%= f.check_box sa.id %>
+	<%= f.label sa.name %>
 <% end %>
-<% @showUser.each do |showU| %>
-	<%= showU.id %>
-	<br>
+<br>
+<%= f.submit 'Show', id: 'butFindSkills' %>
 <% end %>
