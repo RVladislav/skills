@@ -22,15 +22,18 @@ class SkillsController < ApplicationController
 
   def skills_find
     @skillsAll = SkillsTerc.all
-    @userSK = Array.new
-    @skillsSK = Array.new
-    i=0
+    @usersSkillsID = Array.new
+    i = 0
     if params[:post] != nil
       @skillsAll.each do |st|
         if params[:post][st.id.to_s()] == '1'
-
+          @userID = UskillsTerc.where(id_skills:st.id)
         end
-      end  
+      end 
+      @userID.each do |uID|
+        @usersSkillsID[i] = uID.id_users
+        i += 1
+      end
     end
   end
 

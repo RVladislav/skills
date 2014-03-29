@@ -7,3 +7,11 @@
 <br>
 <%= f.submit 'Show', id: 'butFindSkills' %>
 <% end %>
+<br>
+<% if @usersSkillsID %>
+	<% User.where(id: @usersSkillsID).each do |showUS| %>
+		<%= showUS.firstname %>
+		<%= showUS.lastname %>
+		<br>
+	<% end %>
+<% end %>
